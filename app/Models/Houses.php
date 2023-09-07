@@ -13,6 +13,8 @@ class Houses extends Model
         'description',
         'user_id',
         'house_details_id',
+        'house_components_id',
+        'home_amenities_id',
         'price',
         'sale_price',
         'location_id',
@@ -33,6 +35,16 @@ class Houses extends Model
     public function house_details()
     {
         return $this->belongsTo(HouseDetails::class);
+    }
+
+    public function house_components()
+    {
+        return $this->belongsTo(HouseComponents::class);
+    }
+
+    public function home_amenities()
+    {
+        return $this->belongsTo(HomeAmenities::class);
     }
 
     public function location()

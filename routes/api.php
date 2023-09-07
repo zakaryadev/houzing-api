@@ -33,8 +33,10 @@ Route::group(['middleware' => 'api', 'prefix' => 'categories'], function () {
 //== end categories routes
 
 //== users routes
-Route::get('users', [UserController::class, 'index'])->name('users.index');
-Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
+Route::group(['middleware' => 'api', 'prefix' => 'users'], function () {
+    Route::get('', [UserController::class, 'index'])->name('users.index');
+    Route::get('/{id}', [UserController::class, 'show'])->name('users.show');
+});
 //== end users routes
 
 //== auth routes

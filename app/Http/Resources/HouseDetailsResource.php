@@ -10,7 +10,7 @@ class HouseDetailsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'rooms' => $this->num_rooms,
+            'room' => $this->num_rooms,
             'bath' => $this->num_bath,
             'garage' => $this->num_garage,
             'beds' => $this->num_beds,
