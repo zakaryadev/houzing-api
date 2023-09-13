@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
@@ -78,14 +79,14 @@ class AuthController extends Controller
         ]);
     }
 
-    public function me()
+    public function me(): JsonResponse
     {
         return response()->json([
             'user' => UserProfileResource::make(Auth::user()),
         ]);
     }
 
-    public function refresh()
+    public function refresh(): JsonResponse
     {
         return response()->json([
             'authenticationToken' => Auth::refresh(),
