@@ -35,6 +35,7 @@ class HousesController extends Controller
 
     public function store(Request $request): JsonResponse
     {
+
         $house_details_validation = $request->validate([
             'houseDetails.beds' => 'required|integer',
             'houseDetails.room' => 'required|integer',
@@ -43,6 +44,7 @@ class HousesController extends Controller
             'houseDetails.area' => 'required|integer',
             'houseDetails.yearBuilt' => 'required|integer',
         ]);
+
         $home_amenities_validation = $request->validate([
             'homeAmenitiesDto.additional' => 'required|string',
             'homeAmenitiesDto.busStop' => 'required|boolean',
@@ -68,6 +70,7 @@ class HousesController extends Controller
         $token = $request->bearerToken();
         $user = Auth::user();
         if (!$user || !$token) {
+
             return response()->json([
                 'message' => 'Unauthorized'
             ], 404);
@@ -83,7 +86,7 @@ class HousesController extends Controller
                 'country' => $request->country,
                 'zip_code' => $request->zipCode,
                 'categories_id' => $request->categoryId,
-                'user_id' => Auth::user()->id,
+                'user_id' => $user->id,
                 'status' => $request->status,
                 'location_id' => Location::create([
                     'lat' => ($request->locations)['latitude'],

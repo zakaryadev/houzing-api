@@ -11,7 +11,7 @@ use App\Http\Controllers\FilterController;
 Route::group(['middleware' => 'api', 'prefix' => 'houses'], function () {
     Route::get('/list', [FilterController::class, 'list'])->name('houses.list');
     Route::get('/id/{id}', [HousesController::class, 'show'])->name('houses.show');
-    Route::post('', [HousesController::class, 'store'])->name('houses.store');
+    Route::post('/', [HousesController::class, 'store'])->name('houses.store');
     Route::put('/{id}', [HousesController::class, 'update'])->name('houses.update');
     Route::delete('/{id}', [HousesController::class, 'destroy'])->name('houses.destroy');
     Route::get('/categories/{id}', [HousesController::class, 'getByCategory'])->name('houses.getByCategory');

@@ -1,6 +1,6 @@
 <?php
 
-use App\Helper;
+use App\Helperphp;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
